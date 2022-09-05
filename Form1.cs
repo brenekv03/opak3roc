@@ -44,10 +44,17 @@ namespace opak3roc
         {
             prvnisCifrou = "";
             posledniKonci = "";
+            int delkaRetezce = podretezec.Length;
             bool nalezenaCifra = false;
             for(int i =0; i < pole.Length;i++)
             {
                 string slovo = pole[i];
+                int delkaSlova = slovo.Length;
+                string konecSlova = slovo.Substring(delkaSlova - delkaRetezce);
+                if(konecSlova==podretezec)
+                {
+                    posledniKonci = slovo;
+                }
                 for(int j = 0;j<slovo.Length&&!nalezenaCifra;j++)
                 {
                     if (char.IsDigit(slovo[j]))
@@ -56,21 +63,17 @@ namespace opak3roc
                         nalezenaCifra = true;
                     }
                 }
-                if (slovo.Contains(podretezec))
-                {
-                    posledniKonci = slovo;
-                }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string[] pole = { "Václav", "Šimon", "Matěj", "Pavel" };
+            string[] pole = { "Václav", "Šimon", "M1atěj", "Pavel" };
             string podretezec = "on";
             string prvnisCifrou = "";
             string posledniKonci = "";
             ZpracujPole(pole, podretezec, out prvnisCifrou, out posledniKonci);
-            MessageBox.Show("První slovo s cifrou je: "+prvnisCifrou)
+            MessageBox.Show("První slovo s cifrou je: " + prvnisCifrou + "\nPoslední slovo končící zadaným řetězcem je: " +posledniKonci);
         }
     }
 }
