@@ -68,12 +68,23 @@ namespace opak3roc
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string[] pole = { "Václav", "Šimon", "M1atěj", "Pavel" };
-            string podretezec = "on";
+            string[] pole = { "Václav", "Š1mon", "Matěj", "Pavel" };
+            string podretezec = "vel";
             string prvnisCifrou = "";
             string posledniKonci = "";
             ZpracujPole(pole, podretezec, out prvnisCifrou, out posledniKonci);
-            MessageBox.Show("První slovo s cifrou je: " + prvnisCifrou + "\nPoslední slovo končící zadaným řetězcem je: " +posledniKonci);
+            if (prvnisCifrou != "" && posledniKonci != "")
+            {
+                MessageBox.Show("První slovo s cifrou je: " + prvnisCifrou + "\nPoslední slovo končící zadaným řetězcem je: " + posledniKonci);
+            }
+            else if(prvnisCifrou=="")
+            {
+                MessageBox.Show("První slovo s cifrou nebylo nalezeno" + "\nPoslední slovo končící zadaným řetězcem je: " + posledniKonci);
+            }
+            else
+            {
+                MessageBox.Show("První slovo s cifrou je: " + prvnisCifrou + "\nPoslední slovo končící zadaným řetězcem nebylo nalezeno");
+            }
         }
     }
 }
