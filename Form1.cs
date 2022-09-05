@@ -22,10 +22,10 @@ namespace opak3roc
         {
             int pocetRadku = textBox1.Lines.Count();
             string[] p= new string[pocetRadku];
-            for(int i =0;i<textBox1.Lines.Count();i++)
+            char[] separators = { ',', ' ', '.' };
+            for (int i =0;i<pocetRadku;i++)
             {
                 string radek = textBox1.Lines[i];
-                char[] separators = { ',', ' ', '.' };
                 string[] slova = radek.Split(separators, StringSplitOptions.RemoveEmptyEntries);
                 string nejkratsiSlovo = slova[0];
                 for (int j = 0; j < slova.Length; j++)
