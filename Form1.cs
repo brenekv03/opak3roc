@@ -43,6 +43,7 @@ namespace opak3roc
         void ZpracujPole(string[] pole, string podretezec, out string prvnisCifrou, out string posledniKonci)
         {
             prvnisCifrou = "";
+            posledniKonci = "";
             bool nalezenaCifra = false;
             for(int i =0; i < pole.Length;i++)
             {
@@ -55,12 +56,21 @@ namespace opak3roc
                         nalezenaCifra = true;
                     }
                 }
+                if (slovo.Contains(podretezec))
+                {
+                    posledniKonci = slovo;
+                }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            string[] pole = { "Václav", "Šimon", "Matěj", "Pavel" };
+            string podretezec = "on";
+            string prvnisCifrou = "";
+            string posledniKonci = "";
+            ZpracujPole(pole, podretezec, out prvnisCifrou, out posledniKonci);
+            MessageBox.Show("První slovo s cifrou je: "+prvnisCifrou)
         }
     }
 }
